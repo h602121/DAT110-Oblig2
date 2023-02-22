@@ -80,7 +80,6 @@ public class Storage {
 		// TODO: delete topic from the storage
 		subscriptions.remove(topic);
 
-		throw new UnsupportedOperationException(TODO.method());
 		
 	}
 
