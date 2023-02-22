@@ -14,9 +14,18 @@ public class DisplayDevice {
 		System.out.println("Display starting ...");
 		
 		// TODO - START
-				
+
+		Client client = new Client("display", Common.BROKERHOST,Common.BROKERPORT);
 		// create a client object and use it to
-		
+		client.connect();
+		client.createTopic(Common.TEMPTOPIC);
+		client.subscribe(Common.TEMPTOPIC);
+		for (int i = 0; i <COUNT ; i++) {
+			client.receive();
+		}
+		client.unsubscribe(Common.TEMPTOPIC);
+		client.disconnect();
+
 		// - connect to the broker - use "display" as the username
 		// - create the temperature topic on the broker
 		// - subscribe to the topic
@@ -27,8 +36,7 @@ public class DisplayDevice {
 		// TODO - END
 		
 		System.out.println("Display stopping ... ");
-		
-		throw new UnsupportedOperationException(TODO.method());
+
 		
 	}
 }

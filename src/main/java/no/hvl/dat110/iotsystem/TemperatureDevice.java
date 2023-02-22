@@ -14,6 +14,12 @@ public class TemperatureDevice {
 
 		// TODO - start
 
+		Client client = new Client("sensor", Common.BROKERHOST,Common.BROKERPORT);
+		client.connect();
+		for (int i = 0; i <COUNT ; i++) {
+			client.publish(Common.TEMPTOPIC,Integer.toString(sn.read()));
+		}
+		client.disconnect();
 		// create a client object and use it to
 
 		// - connect to the broker - user "sensor" as the user name
